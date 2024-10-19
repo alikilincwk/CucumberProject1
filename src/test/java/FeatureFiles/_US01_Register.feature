@@ -6,7 +6,7 @@ Feature: ParaBank Website Functionality
   Scenario Outline: User Registration
 
     And Click on the Element in LeftNav
-      | Register |
+      | register |
     And User send keys in Dialog
       | firstName       | <FirstName>       |
       | lastName        | <LastName>        |

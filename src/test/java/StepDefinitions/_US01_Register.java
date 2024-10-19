@@ -17,13 +17,13 @@ public class _US01_Register {
         GWD.getDriver().get("https://parabank.parasoft.com/");
 
     }
-    @When("The user clicks on the {string} button on the LeftNav")
-    public void the_user_clicks_on_the_button_on_the_left_nav(String string) {
-        ln.myClick(ln.registerButton);
-
-    }
-    @When("The user fills out the registration form with valid data on the DialogContent")
-    public void the_user_fills_out_the_registration_form_with_valid_data_on_the_dialog_content(io.cucumber.datatable.DataTable dataTable) {
+//    @When("The user clicks on the {string} button on the LeftNav")
+//    public void the_user_clicks_on_the_button_on_the_left_nav(String string) {
+//        ln.myClick(ln.register);
+//
+//    }
+//    @When("The user fills out the registration form with valid data on the DialogContent")
+//    public void the_user_fills_out_the_registration_form_with_valid_data_on_the_dialog_content(io.cucumber.datatable.DataTable dataTable) {
 
 //        dc.mySendKeys(dc.firstName,"Team2B6");
 //        dc.mySendKeys(dc.lastName,"Cucumber1");
@@ -37,12 +37,12 @@ public class _US01_Register {
 //        dc.mySendKeys(dc.password,"password1234");
 //        dc.mySendKeys(dc.confirmPassword,"password1234");
 
-    }
-    @When("The user clicks on the {string} button on the DialogContent")
-    public void the_user_clicks_on_the_button_on_the_dialog_content(String string) {
-        dc.myClick(dc.registerButton2);
-
-    }
+//    }
+//    @When("The user clicks on the {string} button on the DialogContent")
+//    public void the_user_clicks_on_the_button_on_the_dialog_content(String string) {
+//        dc.myClick(dc.registerButton2);
+//
+//    }
     @Then("Success Message Should be Displayed")
     public void success_message_should_be_displayed() {
 

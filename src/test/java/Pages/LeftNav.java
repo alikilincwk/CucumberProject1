@@ -10,8 +10,8 @@ public class LeftNav extends ParentPage{
         PageFactory.initElements(GWD.getDriver(),this);
     }
 
-//    @FindBy()
-//    public WebElement test;
+    @FindBy (xpath = "//a[@href='register.htm']")
+    public WebElement registerButton;
 
 
 
@@ -22,6 +22,7 @@ public class LeftNav extends ParentPage{
 
     public WebElement getWebElement(String strElementName) {
         switch (strElementName.trim()) {
+            case "Register":return registerButton;
 
 
         }

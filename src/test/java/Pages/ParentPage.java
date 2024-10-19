@@ -1,6 +1,7 @@
 package Pages;
 
 import Utilities.GWD;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -11,6 +12,7 @@ import java.time.Duration;
 
 public class ParentPage {
     public WebDriverWait wait = new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(5));
+
 
     public void mySendKeys(WebElement element, String yazi) {
         wait.until(ExpectedConditions.visibilityOf(element));
@@ -26,17 +28,20 @@ public class ParentPage {
     }
 
     public void scrolltoElement(WebElement element) {
-        JavascriptExecutor js=(JavascriptExecutor) GWD.getDriver();
+        JavascriptExecutor js = (JavascriptExecutor) GWD.getDriver();
         js.executeScript("arguments[0].scrollIntoView();", element);
     }
 
-    public void LoginContainsText(WebElement element, String value){
-        wait.until(ExpectedConditions.textToBePresentInElement(element,value));
-        Assert.assertTrue(element.getText().toLowerCase().contains(value.toLowerCase()) );
+    public void LoginContainsText(WebElement element, String value) {
+        wait.until(ExpectedConditions.textToBePresentInElement(element, value));
+        Assert.assertTrue(element.getText().toLowerCase().contains(value.toLowerCase()));
+    }
+//    public void verifyMessageContainsText(String value) {
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='rightPanel']/p")));
+//        String actualMessage = GWD.getDriver().findElement(By.xpath("//div[@id='rightPanel']/p")).getText();
+//        Assert.assertTrue(actualMessage.toLowerCase().contains(value.toLowerCase()), "The message does not contain the expected text!");
+//    }
+
+
     }
 
-
-
-
-
-}

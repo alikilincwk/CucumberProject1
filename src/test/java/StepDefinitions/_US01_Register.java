@@ -43,9 +43,6 @@ public class _US01_Register {
 //        dc.myClick(dc.registerButton2);
 //
 //    }
-    @Then("Success Message Should be Displayed")
-    public void success_message_should_be_displayed() {
 
-    }
 
 }

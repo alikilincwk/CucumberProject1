@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
@@ -32,15 +33,18 @@ public class ParentPage {
         js.executeScript("arguments[0].scrollIntoView();", element);
     }
 
+    public void mySelectByIndex(WebElement element, int index) {
+        wait.until(ExpectedConditions.visibilityOf(element));
+        scrolltoElement(element);
+        Select select = new Select(element);
+        select.selectByIndex(index);
+    }
+
     public void LoginContainsText(WebElement element, String value) {
         wait.until(ExpectedConditions.textToBePresentInElement(element, value));
         Assert.assertTrue(element.getText().toLowerCase().contains(value.toLowerCase()));
     }
-//    public void verifyMessageContainsText(String value) {
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='rightPanel']/p")));
-//        String actualMessage = GWD.getDriver().findElement(By.xpath("//div[@id='rightPanel']/p")).getText();
-//        Assert.assertTrue(actualMessage.toLowerCase().contains(value.toLowerCase()), "The message does not contain the expected text!");
-//    }
+
 
 
     }

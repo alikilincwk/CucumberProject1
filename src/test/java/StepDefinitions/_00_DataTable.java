@@ -4,7 +4,9 @@ import Pages.DialogContent;
 import Pages.LeftNav;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
 import org.openqa.selenium.WebElement;
+
 import java.util.List;
 
 public class _00_DataTable {
@@ -14,7 +16,6 @@ public class _00_DataTable {
     @And("Click on the Element in LeftNav")
     public void clickOnTheElementInLeftNav(DataTable dtLinkler) {
         List<String> listLinkler = dtLinkler.asList(String.class);
-
         for (int i = 0; i < listLinkler.size(); i++) {
             ln.myClick(ln.getWebElement(listLinkler.get(i)));
         }
@@ -24,7 +25,7 @@ public class _00_DataTable {
     public void clickOnTheElementInDialog(DataTable dtButtons) {
         List<String> listButton = dtButtons.asList(String.class);
         for (int i = 0; i < listButton.size(); i++) {
-            ln.myClick(dc.getWebElement(listButton.get(i)));
+            dc.myClick(dc.getWebElement(listButton.get(i)));
         }
     }
 
@@ -37,17 +38,39 @@ public class _00_DataTable {
         }
     }
 
+    @And("User send keys in LeftNav")
+    public void userSendKeysInLeftNav(DataTable dtKutuVeYazilar) {
+        List<List<String>> listKutuVeYazilar = dtKutuVeYazilar.asLists(String.class);
+        for (int i = 0; i < listKutuVeYazilar.size(); i++) {
+            WebElement kutu = (ln.getWebElement(listKutuVeYazilar.get(i).get(0)));
+            ln.mySendKeys(kutu, listKutuVeYazilar.get(i).get(1));
+        }
+    }
+
     @And("User delete the element from Dialog")
     public void userDeleteTheElementFromDialog(DataTable dtSilinecekler) {
         List<String> listSilinecekler = dtSilinecekler.asList();
         for (int i = 0; i < listSilinecekler.size(); i++) {
             dc.deleteItem(listSilinecekler.get(i));
         }
-
     }
 
+    @And("User select the element from Dialog")
+    public void userSelectTheElementFromDialog(DataTable dtSelections) {
+        List<List<String>> listSelections = dtSelections.asLists(String.class);
+        for (int i = 0; i < listSelections.size(); i++) {
+            WebElement ddMenu = dc.getWebElement(listSelections.get(i).get(0));
+            dc.mySelectByIndex(ddMenu, Integer.parseInt(listSelections.get(i).get(1)));
+        }
+    }
 
-
-
+    @Then("Message Should be Displayed")
+    public void MessageShouldBeDisplayed(DataTable dtMessage) {
+        List<List<String>> listMessages = dtMessage.asLists(String.class);
+        for (int i = 0; i < listMessages.size(); i++) {
+            WebElement element=dc.getWebElement(listMessages.get(i).get(0));
+            dc.verifyMessageContainsText(element,listMessages.get(i).get(1));
+        }
+    }
 
 }

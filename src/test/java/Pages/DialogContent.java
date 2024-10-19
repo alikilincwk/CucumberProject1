@@ -2,7 +2,9 @@ package Pages;
 
 import Utilities.GWD;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -10,6 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.time.Duration;
+import java.util.List;
 
 public class DialogContent extends ParentPage {
     WebDriverWait wait = new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(10));
@@ -20,39 +23,65 @@ public class DialogContent extends ParentPage {
 
     @FindBy(xpath = "//input[@id='customer.firstName']")
     public WebElement firstName;
-
     @FindBy(xpath = "//input[@id='customer.lastName']")
     public WebElement lastName;
-
     @FindBy(xpath = "//input[@id='customer.address.street']")
     public WebElement address;
-
     @FindBy(xpath = "//input[@id='customer.address.city']")
     public WebElement city;
-
     @FindBy(xpath = "//input[@id='customer.address.state']")
     public WebElement state;
-
     @FindBy(xpath = "//input[@id='customer.address.zipCode']")
     public WebElement zipCode;
-
     @FindBy(xpath = "//input[@id='customer.phoneNumber']")
     public WebElement phone;
-
     @FindBy(xpath = "//input[@id='customer.ssn']")
     public WebElement ssn;
-
     @FindBy(xpath = "//input[@id='customer.username']")
     public WebElement userName;
-
     @FindBy(xpath = "//input[@id='customer.password']")
     public WebElement password;
-
     @FindBy(xpath = "//input[@id='repeatedPassword']")
     public WebElement confirmPassword;
     @FindBy(css = "input.button[value='Register']")
     public WebElement registerButton2;
+    @FindBy(xpath = "//input[@name='payee.name']")
+    public WebElement billName;
+    @FindBy(xpath = "//input[@name='payee.address.street']")
+    public WebElement billAddress;
+    @FindBy(xpath = "//input[@name='payee.address.city']")
+    public WebElement billCity;
+    @FindBy(xpath = "//input[@name='payee.address.state']")
+    public WebElement billState;
+    @FindBy(xpath = "//input[@name='payee.address.zipCode']")
+    public WebElement billZipCode;
+    @FindBy(xpath = "//input[@name='payee.accountNumber']")
+    public WebElement billAccNum;
+    @FindBy(xpath = "//input[@name='verifyAccount']")
+    public WebElement billAccNumVrf;
+    @FindBy(xpath = "//input[@name='amount']")
+    public WebElement billAmount;
+    @FindBy(xpath = "//select[@name='fromAccountId']")
+    public WebElement billSelectAcc;
+    @FindBy(xpath = "//input[@value='Send Payment']")
+    public WebElement billPaymentButton;
+    @FindBy(xpath = "//div[@id='rightPanel']")
+    public WebElement messageBox;
+    @FindBy(xpath = "//table[@id='accountTable']//a")
+    public WebElement accTableFirstAcc;
+    @FindBy(xpath = "//a[starts-with(text(),'Bill Payment to')]")
+    public List<WebElement> payments;
 
+
+
+
+
+
+
+    public void verifyMessageContainsText(WebElement element,String value){
+        wait.until(ExpectedConditions.visibilityOf(this.messageBox));
+        Assert.assertTrue( this.messageBox.getText().toLowerCase().contains(value.toLowerCase()));
+    }
 
     public void deleteItem (String deleteName){
 
@@ -72,6 +101,20 @@ public class DialogContent extends ParentPage {
             case "password": return this.password;
             case "confirmPassword": return this.confirmPassword;
             case "registerButton2": return this.registerButton2;
+            case "billName":return this.billName;
+            case "billAddress":return this.billAddress;
+            case "billCity":return this.billCity;
+            case "billState":return this.billState;
+            case "billZipCode":return this.billZipCode;
+            case "billAccNum":return this.billAccNum;
+            case "billAccNumVrf":return this.billAccNumVrf;
+            case "billAmount":return this.billAmount;
+            case "billSelectAcc":return this.billSelectAcc;
+            case "billPaymentButton":return this.billPaymentButton;
+            case "messageBox":return this.messageBox;
+            case "accTableFirstAcc":return this.accTableFirstAcc;
+
+
         }
         return null;
     }

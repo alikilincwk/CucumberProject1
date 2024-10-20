@@ -1,10 +1,7 @@
 package Pages;
 
 import Utilities.GWD;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -15,7 +12,6 @@ import java.time.Duration;
 import java.util.List;
 
 public class DialogContent extends ParentPage {
-    WebDriverWait wait = new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(10));
 
     public DialogContent() {
         PageFactory.initElements(GWD.getDriver(), this);
@@ -66,7 +62,7 @@ public class DialogContent extends ParentPage {
     @FindBy(xpath = "//input[@value='Send Payment']")
     public WebElement billPaymentButton;
     @FindBy(xpath = "//div[@id='rightPanel']")
-    public WebElement messageBox;
+    public WebElement messageBoxDC;
     @FindBy(xpath = "//table[@id='accountTable']//a")
     public WebElement accTableFirstAcc;
     @FindBy(xpath = "//a[starts-with(text(),'Bill Payment to')]")
@@ -78,9 +74,9 @@ public class DialogContent extends ParentPage {
 
 
 
-    public void verifyMessageContainsText(WebElement element,String value){
-        wait.until(ExpectedConditions.visibilityOf(this.messageBox));
-        Assert.assertTrue( this.messageBox.getText().toLowerCase().contains(value.toLowerCase()));
+    public void verifyMessageContainsText( String value) {
+        wait.until(ExpectedConditions.visibilityOf(this.messageBoxDC));
+        Assert.assertTrue(this.messageBoxDC.getText().toLowerCase().contains(value.toLowerCase()));
     }
 
     public void deleteItem (String deleteName){
@@ -111,7 +107,7 @@ public class DialogContent extends ParentPage {
             case "billAmount":return this.billAmount;
             case "billSelectAcc":return this.billSelectAcc;
             case "billPaymentButton":return this.billPaymentButton;
-            case "messageBox":return this.messageBox;
+            case "messageBoxDC":return this.messageBoxDC;
             case "accTableFirstAcc":return this.accTableFirstAcc;
 
 

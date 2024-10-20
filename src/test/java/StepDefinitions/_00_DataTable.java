@@ -2,16 +2,22 @@ package StepDefinitions;
 
 import Pages.DialogContent;
 import Pages.LeftNav;
+import Utilities.GWD;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
+import java.time.Duration;
 import java.util.List;
 
 public class _00_DataTable {
     LeftNav ln = new LeftNav();
     DialogContent dc = new DialogContent();
+    WebDriverWait wait = new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(10));
 
     @And("Click on the Element in LeftNav")
     public void clickOnTheElementInLeftNav(DataTable dtLinkler) {
@@ -66,11 +72,13 @@ public class _00_DataTable {
 
     @Then("Message Should be Displayed")
     public void MessageShouldBeDisplayed(DataTable dtMessage) {
-        List<List<String>> listMessages = dtMessage.asLists(String.class);
+        List<String> listMessages = dtMessage.asList(String.class);
         for (int i = 0; i < listMessages.size(); i++) {
-            WebElement element=dc.getWebElement(listMessages.get(i).get(0));
-            dc.verifyMessageContainsText(element,listMessages.get(i).get(1));
+           dc.verifyMessageContainsText(listMessages.get(i));
         }
     }
 
+
 }
+
+

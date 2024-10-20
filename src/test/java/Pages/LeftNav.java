@@ -4,6 +4,8 @@ import Utilities.GWD;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 
 public class LeftNav extends ParentPage {
     public LeftNav() {
@@ -46,6 +48,14 @@ public class LeftNav extends ParentPage {
     public WebElement requestLoan;
     @FindBy(xpath = "//a[text()='Log Out']")
     public WebElement logout;
+    @FindBy(xpath = "//p[@class='smallText']")
+    public WebElement messageBoxLN;
+
+
+    public void verifyMessageContainsText( String value) {
+        wait.until(ExpectedConditions.visibilityOf(this.messageBoxLN));
+        Assert.assertTrue(this.messageBoxLN.getText().toLowerCase().contains(value.toLowerCase()));
+    }
 
     public WebElement getWebElement(String strElementName) {
         switch (strElementName.trim()) {
@@ -67,6 +77,7 @@ public class LeftNav extends ParentPage {
             case "updateContactInfo":return this.updateContactInfo;
             case "requestLoan":return this.requestLoan;
             case "logout":return this.logout;
+            case "messageBoxLN":return this.messageBoxLN;
 
         }
         return null;

@@ -12,6 +12,7 @@ import java.time.Duration;
 import java.util.List;
 
 public class DialogContent extends ParentPage {
+    WebDriverWait wait = new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(10));
 
     public DialogContent() {
         PageFactory.initElements(GWD.getDriver(), this);
@@ -65,10 +66,12 @@ public class DialogContent extends ParentPage {
     public WebElement messageBoxDC;
     @FindBy(xpath = "//table[@id='accountTable']//a")
     public WebElement accTableFirstAcc;
-    @FindBy(xpath = "//a[starts-with(text(),'Bill Payment to')]")
-    public List<WebElement> payments;
-
-
+    @FindBy(xpath = "(//a[starts-with(text(),'Bill Payment to')])[1]")
+    public WebElement billPayment1;
+    @FindBy(xpath = "(//a[starts-with(text(),'Bill Payment to')])[2]")
+    public WebElement billPayment2;
+    @FindBy(xpath = "(//a[starts-with(text(),'Bill Payment to')])[3]")
+    public WebElement billPayment3;
 
 
 
@@ -109,6 +112,9 @@ public class DialogContent extends ParentPage {
             case "billPaymentButton":return this.billPaymentButton;
             case "messageBoxDC":return this.messageBoxDC;
             case "accTableFirstAcc":return this.accTableFirstAcc;
+            case "billPayment1":return this.billPayment1;
+            case "billPayment2":return this.billPayment2;
+            case "billPayment3":return this.billPayment3;
 
 
         }

@@ -17,7 +17,6 @@ import java.util.List;
 public class _00_DataTable {
     LeftNav ln = new LeftNav();
     DialogContent dc = new DialogContent();
-    WebDriverWait wait = new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(10));
 
     @And("Click on the Element in LeftNav")
     public void clickOnTheElementInLeftNav(DataTable dtLinkler) {

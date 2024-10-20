@@ -22,8 +22,8 @@ Feature: Bill Payment
       | accountsOverview |
     And Click on the Element in Dialog
       | accTableFirstAcc |
-    Then Message Should be Displayed
-      |  |
+    Then Bill Payment Message Should be Displayed
+      | <name> |
 
     Examples:
       | name        | rndData | rndNum  | amount |

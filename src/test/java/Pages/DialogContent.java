@@ -1,6 +1,8 @@
 package Pages;
 
+import StepDefinitions._US05_TransferFunds;
 import Utilities.GWD;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -72,6 +74,26 @@ public class DialogContent extends ParentPage {
     public WebElement billPayment2;
     @FindBy(xpath = "(//a[starts-with(text(),'Bill Payment to')])[3]")
     public WebElement billPayment3;
+    @FindBy(css = "[id='amount']")
+    public WebElement amount;
+    @FindBy(id = "fromAccountId")
+    public WebElement fromAccountSelect;
+    @FindBy(css = "[id='fromAccountId']>option")
+    public WebElement fromAccountSelect1;
+    @FindBy(id = "toAccountId")
+    public WebElement toAccountSelect;
+    @FindBy(css = "[id='toAccountId']>:nth-child(2)")
+    public WebElement toAccountSelect1;
+    @FindBy(css = "[value='Transfer']")
+    public WebElement transferButton;
+    @FindBy(css = "[id='showResult'] > :nth-child(1)")
+    public WebElement transferControlMessage;
+    @FindBy(xpath = "(//table[@id='accountTable']//a)[2]")
+    public WebElement fromAccountId;
+    @FindBy(xpath = "(//table[@id='transactionTable']//tr[last()])[2]")
+    public WebElement lastFundsTransferReceived;
+    @FindBy(xpath = "(//td[@align='right'])[5]/following-sibling::td")
+    public WebElement amountControl;
 
 
 
@@ -115,9 +137,20 @@ public class DialogContent extends ParentPage {
             case "billPayment1":return this.billPayment1;
             case "billPayment2":return this.billPayment2;
             case "billPayment3":return this.billPayment3;
-
+            case "amount": return this.amount;
+            case "fromAccountSelect": return  this.fromAccountSelect;
+            case "fromAccountSelect1": return this.fromAccountSelect1;
+            case "toAccountSelect": return this.toAccountSelect;
+            case "toAccountSelect1": return this.toAccountSelect1;
+            case "transferButton": return this.transferButton;
+            case "transferControlMessage": return this.transferControlMessage;
+            case "fromAccountId": return this.fromAccountId;
+            case "lastFundsTransferReceived": return this.lastFundsTransferReceived;
+            case "amountControl": return this.amountControl;
 
         }
         return null;
     }
+
+
 }

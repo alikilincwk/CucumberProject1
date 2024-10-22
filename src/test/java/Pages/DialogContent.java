@@ -1,8 +1,6 @@
 package Pages;
 
-import StepDefinitions._US05_TransferFunds;
 import Utilities.GWD;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -11,7 +9,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.time.Duration;
-import java.util.List;
 
 public class DialogContent extends ParentPage {
     WebDriverWait wait = new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(10));
@@ -106,6 +103,22 @@ public class DialogContent extends ParentPage {
     public WebElement findTransactionButton;
     @FindBy(xpath = "//h1[@class='title']")
     public WebElement errorMessage;
+    @FindBy(css = "[id='amount']")
+    public WebElement loanAmount;
+    @FindBy(css = "[id='downPayment']")
+    public WebElement downPayment;
+    @FindBy(css = "[id='fromAccountId']")
+    public WebElement loanSelect;
+    @FindBy(css = "[value='Apply Now']")
+    public WebElement applyNow;
+    @FindBy(css = "[id='loanStatus']")
+    public WebElement statuMessage;
+    @FindBy(css = "[id='newAccountId']")
+    public WebElement newAccoutId;
+    @FindBy(css = "[id='noTransactions']")
+    public WebElement noTransaction;
+    @FindBy(css = "[id='loanRequestDenied']")
+    public WebElement deniedMessage;
 
 
 
@@ -164,6 +177,14 @@ public class DialogContent extends ParentPage {
             case "findTransactionButton": return this.findTransactionButton;
             case "transactionIdtext": return this.transactionIdtext;
             case "errorMessage": return this.errorMessage;
+            case "loanAmount": return this.loanAmount;
+            case "downPayment": return this.downPayment;
+            case "loanSelect": return this.loanSelect;
+            case "applyNow": return this.applyNow;
+            case "statuMessage": return this.statuMessage;
+            case "newAccoutId": return this.newAccoutId;
+            case "noTransaction": return this.noTransaction;
+            case "deniedMessage": return this.deniedMessage;
 
         }
         return null;

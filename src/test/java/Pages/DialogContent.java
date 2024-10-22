@@ -94,7 +94,16 @@ public class DialogContent extends ParentPage {
     public WebElement lastFundsTransferReceived;
     @FindBy(xpath = "(//td[@align='right'])[5]/following-sibling::td")
     public WebElement amountControl;
-
+    @FindBy(css = "[id='accountId']")
+    public WebElement selectAccountInFindTransaction;
+    @FindBy(xpath = "//select[@id='accountId']/option[last()]")
+    public WebElement selectLastNumber;
+    @FindBy(xpath = "(//div[@id='rightPanel']//td)[2]")
+    public WebElement transactionIdtext;
+    @FindBy(css = "[id='transactionId']")
+    public WebElement transactionIdinput;
+    @FindBy(css = "[id='findById']")
+    public WebElement findTransactionButton;
 
 
 
@@ -147,6 +156,11 @@ public class DialogContent extends ParentPage {
             case "fromAccountId": return this.fromAccountId;
             case "lastFundsTransferReceived": return this.lastFundsTransferReceived;
             case "amountControl": return this.amountControl;
+            case "selectAccountInFindTransaction": return this.selectAccountInFindTransaction;
+            case "selectLastNumber": return this.selectLastNumber;
+            case "transactionIdinput": return this.transactionIdinput;
+            case "findTransactionButton": return this.findTransactionButton;
+            case "transactionIdtext": return this.transactionIdtext;
 
         }
         return null;

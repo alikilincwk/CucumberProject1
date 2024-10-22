@@ -11,7 +11,7 @@ import org.testng.Assert;
 public class _US01_Register {
     DialogContent dc = new DialogContent();
     LeftNav ln=new LeftNav();
-
+    static String randomData= RandomStringUtils.randomAlphanumeric(8); // 8 tane karışık harf
 
     @Given("Navigate to ParaBank Website")
     public void navigate_to_para_bank_website() {
@@ -21,7 +21,7 @@ public class _US01_Register {
 
     @And("User send random keys in Dialog")
     public void userSendRandomKeysInDialog() {
-        String randomData= RandomStringUtils.randomAlphanumeric(8); // 8 tane karışık harf
+        randomData= RandomStringUtils.randomAlphanumeric(8); // 8 tane karışık harf
        // String ulkeKodu= RandomStringUtils.randomNumeric(4); // 4 tane karşık rakam
 
         dc.mySendKeys(dc.firstName,randomData);

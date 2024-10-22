@@ -16,7 +16,6 @@ public class _US07_LoanApplication {
     @Then("Loan Approved message confirmation")
     public void userDeleteTheElementFromDialog() {
         wait.until(ExpectedConditions.visibilityOf(dc.statuMessage));
-        System.out.println(dc.statuMessage.getText());
         Assert.assertTrue(dc.statuMessage.getText().toLowerCase().contains("Approved".toLowerCase()));
 
     }

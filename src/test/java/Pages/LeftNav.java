@@ -49,12 +49,12 @@ public class LeftNav extends ParentPage {
     @FindBy(xpath = "//a[text()='Log Out']")
     public WebElement logout;
     @FindBy(xpath = "//p[@class='smallText']")
-    public WebElement messageBoxLN;
+    public WebElement welcomeMessage;
 
 
-    public void verifyMessageContainsText( String value) {
-        wait.until(ExpectedConditions.visibilityOf(this.messageBoxLN));
-        Assert.assertTrue(this.messageBoxLN.getText().toLowerCase().contains(value.toLowerCase()));
+    public void verifyLoginMessageContainsText(String value) {
+        wait.until(ExpectedConditions.visibilityOf(this.welcomeMessage));
+        Assert.assertTrue(this.welcomeMessage.getText().toLowerCase().contains(value.toLowerCase()));
     }
 
     public WebElement getWebElement(String strElementName) {
@@ -77,7 +77,7 @@ public class LeftNav extends ParentPage {
             case "updateContactInfo":return this.updateContactInfo;
             case "requestLoan":return this.requestLoan;
             case "logout":return this.logout;
-            case "messageBoxLN":return this.messageBoxLN;
+            case "welcomeMessage":return this.welcomeMessage;
 
         }
         return null;

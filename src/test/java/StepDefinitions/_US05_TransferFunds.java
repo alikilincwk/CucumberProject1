@@ -74,5 +74,7 @@ public class _US05_TransferFunds {
         dc.myClick(dc.selectLastNumber);
         dc.mySendKeys(dc.transactionIdinput, text);
         dc.myClick(dc.findTransactionButton);
+
+
     }
 }

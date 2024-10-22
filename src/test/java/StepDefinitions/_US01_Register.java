@@ -5,6 +5,7 @@ import Pages.LeftNav;
 import Pages.ParentPage;
 import Utilities.GWD;
 import io.cucumber.java.en.*;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.Assert;
 
 public class _US01_Register {
@@ -15,6 +16,25 @@ public class _US01_Register {
     @Given("Navigate to ParaBank Website")
     public void navigate_to_para_bank_website() {
         GWD.getDriver().get("https://parabank.parasoft.com/");
+
+    }
+
+    @And("User send random keys in Dialog")
+    public void userSendRandomKeysInDialog() {
+        String randomData= RandomStringUtils.randomAlphanumeric(8); // 8 tane karışık harf
+       // String ulkeKodu= RandomStringUtils.randomNumeric(4); // 4 tane karşık rakam
+
+        dc.mySendKeys(dc.firstName,randomData);
+        dc.mySendKeys(dc.lastName,randomData);
+        dc.mySendKeys(dc.address,randomData);
+        dc.mySendKeys(dc.city,randomData);
+        dc.mySendKeys(dc.state,randomData);
+        dc.mySendKeys(dc.zipCode,randomData);
+        dc.mySendKeys(dc.phone,randomData);
+        dc.mySendKeys(dc.ssn,randomData);
+        dc.mySendKeys(dc.userName,randomData);
+        dc.mySendKeys(dc.password,randomData);
+        dc.mySendKeys(dc.confirmPassword,randomData);
 
     }
 //    @When("The user clicks on the {string} button on the LeftNav")

@@ -104,7 +104,8 @@ public class DialogContent extends ParentPage {
     public WebElement transactionIdinput;
     @FindBy(css = "[id='findById']")
     public WebElement findTransactionButton;
-
+    @FindBy(xpath = "//h1[@class='title']")
+    public WebElement errorMessage;
 
 
 
@@ -112,6 +113,7 @@ public class DialogContent extends ParentPage {
         wait.until(ExpectedConditions.visibilityOf(this.messageBoxDC));
         Assert.assertTrue(this.messageBoxDC.getText().toLowerCase().contains(value.toLowerCase()));
     }
+
 
     public void deleteItem (String deleteName){
 
@@ -161,6 +163,7 @@ public class DialogContent extends ParentPage {
             case "transactionIdinput": return this.transactionIdinput;
             case "findTransactionButton": return this.findTransactionButton;
             case "transactionIdtext": return this.transactionIdtext;
+            case "errorMessage": return this.errorMessage;
 
         }
         return null;

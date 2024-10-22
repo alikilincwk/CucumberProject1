@@ -6,19 +6,17 @@ import Utilities.GWD;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.time.Duration;
-import java.util.ArrayList;
 import java.util.List;
 
 public class _US05_TransferFunds {
-    LeftNav ln=new LeftNav();
-    DialogContent dc=new DialogContent();
-    WebDriverWait wd=new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(5));
+    LeftNav ln = new LeftNav();
+    DialogContent dc = new DialogContent();
+    WebDriverWait wait = new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(5));
 
     @Then("Login Success Message Should be Displayed")
     public void loginSuccessMessageShouldBeDisplayed() {
@@ -35,7 +33,7 @@ public class _US05_TransferFunds {
 
     @Then("Transfer Confirmation Message")
     public void transferConfirmationMessage() {
-        wd.until(ExpectedConditions.visibilityOf(dc.transferControlMessage));
+        wait.until(ExpectedConditions.visibilityOf(dc.transferControlMessage));
         Assert.assertTrue(dc.transferControlMessage.getText().contains("Complete"));
     }
 
@@ -52,14 +50,29 @@ public class _US05_TransferFunds {
     }
 
     @And("Amount Transaction Control")
-    public void amountTransactionControl() {
+    public void amountTransactionControl(DataTable dtnumber) {
+        List<String> butonlar = dtnumber.asList(String.class);
 
-        double item2=Double.parseDouble(dc.amount.getAccessibleName());
-        System.out.println(item2);
-        double item= Double.parseDouble(dc.amountControl.getText().replaceAll("[^0-9]",""));;
-        System.out.println(item);
+        for (int i = 0; i < butonlar.size(); i++) {
+            double item1 = Double.parseDouble(butonlar.get(i));
+            double item2 = Double.parseDouble(dc.amountControl.getText().replace(",00", "").replace("$", ""));
+            Assert.assertEquals(item1, item2, "Para transfer kontrolü başarısız");
+        }
 
 
-        Assert.assertTrue(dc.amountControl.getText().contains(dc.amount.getText()),"Para transfer kontrolü başarısız");
+    }
+
+    @And("User send keys and click in Dialog for Find Transaction Id")
+    public void userSendKeysInDialogForFindTransaction() {
+        dc.myClick(dc.fromAccountId);
+        dc.myClick(dc.lastFundsTransferReceived);
+        System.out.println(dc.transactionIdtext.getText());
+        String text=dc.transactionIdtext.getText();
+        ln.myClick(ln.findTransactions);
+        dc.myClick(dc.selectAccountInFindTransaction);
+        wait.until(ExpectedConditions.visibilityOf(dc.selectLastNumber));
+        dc.myClick(dc.selectLastNumber);
+        dc.mySendKeys(dc.transactionIdinput, text);
+        dc.myClick(dc.findTransactionButton);
     }
 }

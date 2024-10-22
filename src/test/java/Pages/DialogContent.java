@@ -119,6 +119,30 @@ public class DialogContent extends ParentPage {
     public WebElement noTransaction;
     @FindBy(css = "[id='loanRequestDenied']")
     public WebElement deniedMessage;
+    @FindBy(css = "[id='customer.firstName']")
+    public WebElement infoFirstName;
+    @FindBy(css = "[id='customer.lastName']")
+    public WebElement infoLastName;
+    @FindBy(css = "[id='customer.address.street']")
+    public WebElement infoAddress;
+    @FindBy(css = "[id='customer.address.city']")
+    public WebElement infoCity;
+    @FindBy(css = "[id='customer.address.state']")
+    public WebElement infoState;
+    @FindBy(css = "[id='customer.address.zipCode']")
+    public WebElement infoZipCode;
+    @FindBy(css = "[id='customer.phoneNumber']")
+    public WebElement infoPhone;
+    @FindBy(css = "[value='Update Profile']")
+    public WebElement updateProfileButton;
+    @FindBy(css = "[id='updateProfileResult']>p")
+    public WebElement infoUpdateConfirm;
+    @FindBy(css = "[id='firstName-error']")
+    public WebElement firstNameError;
+    @FindBy(css = "[id='lastName-error']")
+    public WebElement lastNameError;
+    @FindBy(css = "[id='street-error']")
+    public WebElement streetError;
 
 
 
@@ -185,6 +209,15 @@ public class DialogContent extends ParentPage {
             case "newAccoutId": return this.newAccoutId;
             case "noTransaction": return this.noTransaction;
             case "deniedMessage": return this.deniedMessage;
+            case "infoFirstName": return this.infoFirstName;
+            case "infoLastName": return this.infoLastName;
+            case "infoAddress": return this.infoAddress;
+            case "infoCity": return this.infoCity;
+            case "infoState": return this.infoState;
+            case "infoZipCode": return this.infoZipCode;
+            case "infoPhone": return this.infoPhone;
+            case "updateProfileButton": return this.updateProfileButton;
+            case "infoUpdateConfirm": return this.infoUpdateConfirm;
 
         }
         return null;

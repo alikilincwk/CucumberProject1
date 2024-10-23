@@ -39,9 +39,9 @@ Parabank is a virtual banking application used to simulate and test various fina
 1. Clone the repository using GitHub:
    ```bash
    git clone https://github.com/yourusername/Techno-Study-Agile-Software-Testing-Project.git
-2.Open IntelliJ IDEA.
-3.Navigate to File > New > Project from Version Control.
-4Paste the cloned GitHub URL and load the project.
+2. Open IntelliJ IDEA.
+3. Navigate to File > New > Project from Version Control.
+4. Paste the cloned GitHub URL and load the project.
 
 ## Configuration/Setup
 1. Ensure you have **Java 11** or higher installed.

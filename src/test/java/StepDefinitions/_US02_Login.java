@@ -19,6 +19,7 @@ public class _US02_Login {
     WebDriverWait wait = new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(10));
     LeftNav ln = new LeftNav();
     DialogContent dc = new DialogContent();
+    _US01_Register data = new _US01_Register();
 
     @Then("Login Message Should be Displayed")
     public void loginMessageShouldBeDisplayed(DataTable dtMessage) {
@@ -30,33 +31,17 @@ public class _US02_Login {
 
     @And("User registers and send random keys in LeftNav")
     public void userRegistersAndSendRandomKeysInLeftNav() {
-        String randomData= RandomStringUtils.randomAlphanumeric(8);
-
-        dc.mySendKeys(dc.firstName,randomData);
-        dc.mySendKeys(dc.lastName,randomData);
-        dc.mySendKeys(dc.address,randomData);
-        dc.mySendKeys(dc.city,randomData);
-        dc.mySendKeys(dc.state,randomData);
-        dc.mySendKeys(dc.zipCode,randomData);
-        dc.mySendKeys(dc.phone,randomData);
-        dc.mySendKeys(dc.ssn,randomData);
-        dc.mySendKeys(dc.userName,randomData);
-        dc.mySendKeys(dc.password,randomData);
-        dc.mySendKeys(dc.confirmPassword,randomData);
-        dc.myClick(dc.registerButton2);
-
-        ln.myClick(ln.logout);
-
-        ln.mySendKeys(ln.username, randomData);
-        ln.mySendKeys(ln.password, randomData);
+        String loginData = data.randomData;
+        ln.mySendKeys(ln.username, loginData);
+        ln.mySendKeys(ln.password, loginData);
     }
 
     @And("User send random keys in LeftNav")
     public void userSendRandomKeysInLeftNav() {
-        String randomData= RandomStringUtils.randomAlphanumeric(8);
+        String randomLoginData = RandomStringUtils.randomAlphanumeric(8);
 
-        ln.mySendKeys(ln.username, randomData);
-        ln.mySendKeys(ln.password, randomData);
+        ln.mySendKeys(ln.username, randomLoginData);
+        ln.mySendKeys(ln.password, randomLoginData);
     }
 
     @Then("Error Message Should be Displayed")
@@ -67,7 +52,7 @@ public class _US02_Login {
         }
     }
 
-    public void verifyErrorMessage( String value) {
+    public void verifyErrorMessage(String value) {
         wait.until(ExpectedConditions.visibilityOf(dc.errorMessage));
         Assert.assertTrue(dc.errorMessage.getText().toLowerCase().contains(value.toLowerCase()));
     }

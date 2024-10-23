@@ -52,11 +52,11 @@ Parabank is a virtual banking application used to simulate and test various fina
 3. Set up a **TestNG XML** to define and manage your test suite execution.
 
 ## Contributing
-*alikilincwk
-*AlizaminMammadli
-*ariftemur
-*Gunay4
-*GWilsonpixie 
-*kardelenssu
-*Sinem777
-*umit20222
+- **alikilincwk**
+- **AlizaminMammadli**
+- **ariftemur**
+- **Gunay4**
+- **GWilsonpixie**
+- **kardelenssu**
+- **Sinem777**
+- **umit20222**

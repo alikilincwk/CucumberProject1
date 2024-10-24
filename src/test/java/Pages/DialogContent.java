@@ -51,6 +51,8 @@ public class DialogContent extends ParentPage {
     public WebElement billState;
     @FindBy(xpath = "//input[@name='payee.address.zipCode']")
     public WebElement billZipCode;
+    @FindBy(xpath = "//input[@name='payee.phoneNumber']")
+    public WebElement billPhoneNum;
     @FindBy(xpath = "//input[@name='payee.accountNumber']")
     public WebElement billAccNum;
     @FindBy(xpath = "//input[@name='verifyAccount']")
@@ -61,16 +63,14 @@ public class DialogContent extends ParentPage {
     public WebElement billSelectAcc;
     @FindBy(xpath = "//input[@value='Send Payment']")
     public WebElement billPaymentButton;
+    @FindBy(xpath = "//span[@id='amount']")
+    public WebElement billPaymentAmount;
     @FindBy(xpath = "//div[@id='rightPanel']")
     public WebElement messageBoxDC;
     @FindBy(xpath = "//table[@id='accountTable']//a")
     public WebElement accTableFirstAcc;
-    @FindBy(xpath = "(//a[starts-with(text(),'Bill Payment to')])[1]")
-    public WebElement billPayment1;
-    @FindBy(xpath = "(//a[starts-with(text(),'Bill Payment to')])[2]")
-    public WebElement billPayment2;
-    @FindBy(xpath = "(//a[starts-with(text(),'Bill Payment to')])[3]")
-    public WebElement billPayment3;
+    @FindBy(xpath = "//a[starts-with(text(),'Bill Payment to')]")
+    public WebElement billPayment;
     @FindBy(css = "[id='amount']")
     public WebElement amount;
     @FindBy(id = "fromAccountId")
@@ -175,6 +175,7 @@ public class DialogContent extends ParentPage {
             case "billCity":return this.billCity;
             case "billState":return this.billState;
             case "billZipCode":return this.billZipCode;
+            case "billPhoneNum":return this.billPhoneNum;
             case "billAccNum":return this.billAccNum;
             case "billAccNumVrf":return this.billAccNumVrf;
             case "billAmount":return this.billAmount;
@@ -182,9 +183,7 @@ public class DialogContent extends ParentPage {
             case "billPaymentButton":return this.billPaymentButton;
             case "messageBoxDC":return this.messageBoxDC;
             case "accTableFirstAcc":return this.accTableFirstAcc;
-            case "billPayment1":return this.billPayment1;
-            case "billPayment2":return this.billPayment2;
-            case "billPayment3":return this.billPayment3;
+            case "billPayment1":return this.billPayment;
             case "amount": return this.amount;
             case "fromAccountSelect": return  this.fromAccountSelect;
             case "fromAccountSelect1": return this.fromAccountSelect1;

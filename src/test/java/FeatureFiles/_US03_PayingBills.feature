@@ -1,5 +1,15 @@
 Feature: Bill Payment
 
+  Background:
+    Given Navigate to ParaBank Website
+    And Click on the Element in LeftNav
+      | register |
+    And User send random keys in Dialog
+    And Click on the Element in Dialog
+      | registerButton2 |
+    Then Message Should be Displayed
+      | success |
+
   Scenario Outline: Electricity Bill Payment
     And Click on the Element in LeftNav
       | billPay |
@@ -9,6 +19,7 @@ Feature: Bill Payment
       | billCity      | <rndData> |
       | billState     | <rndData> |
       | billZipCode   | <rndData> |
+      | billPhoneNum  | <rndData> |
       | billAccNum    | <rndNum>  |
       | billAccNumVrf | <rndNum>  |
       | billAmount    | <amount>  |
@@ -16,8 +27,8 @@ Feature: Bill Payment
       | billSelectAcc | 0 |
     And Click on the Element in Dialog
       | billPaymentButton |
-    Then Message Should be Displayed
-      | success |
+    Then Amount Message Should be Displayed
+      | <amount> |
     And Click on the Element in LeftNav
       | accountsOverview |
     And Click on the Element in Dialog

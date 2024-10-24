@@ -20,29 +20,25 @@ public class _US03_PayingBills {
     public void billPaymentMessageShouldBeDisplayed(DataTable dtMessage) {
         List<String> listMessages = dtMessage.asList(String.class);
         for (int i = 0; i < listMessages.size(); i++) {
-            verifyBillMessageContainsText(listMessages.get(i), i);
+            verifyBillMessageContainsText(listMessages.get(i));
         }
     }
 
-    public void verifyBillMessageContainsText(String value, int index) {
-        switch (index) {
-            case 0: {
-                wait.until(ExpectedConditions.visibilityOf(dc.billPayment1));
-                Assert.assertTrue(dc.billPayment1.getText().toLowerCase().contains(value.toLowerCase()));
-            }
-            case 1: {
-                wait.until(ExpectedConditions.visibilityOf(dc.billPayment2));
-                Assert.assertTrue(dc.billPayment2.getText().toLowerCase().contains(value.toLowerCase()));
-            }
-            case 2: {
-                wait.until(ExpectedConditions.visibilityOf(dc.billPayment3));
-                Assert.assertTrue(dc.billPayment3.getText().toLowerCase().contains(value.toLowerCase()));
-            }
-            default:
-                Assert.fail();
-
-        }
+    public void verifyBillMessageContainsText(String value) {
+        wait.until(ExpectedConditions.visibilityOf(dc.billPayment));
+        Assert.assertTrue(dc.billPayment.getText().toLowerCase().contains(value.toLowerCase()));
 
     }
 
+    @Then("Amount Message Should be Displayed")
+    public void amountMessageShouldBeDisplayed(DataTable dtMessage) {
+        List<String> listMessages = dtMessage.asList(String.class);
+        for (int i = 0; i < listMessages.size(); i++) {
+            verifyMessageContainsText(listMessages.get(i));
+        }
+    }
+    public void verifyMessageContainsText( String value) {
+        wait.until(ExpectedConditions.visibilityOf(dc.billPaymentAmount));
+        Assert.assertTrue(dc.billPaymentAmount.getText().toLowerCase().contains(value.toLowerCase()));
+    }
 }

@@ -143,6 +143,20 @@ public class DialogContent extends ParentPage {
     public WebElement lastNameError;
     @FindBy(css = "[id='street-error']")
     public WebElement streetError;
+    @FindBy(xpath = "//*[@id='type']")
+    public WebElement accountTypeDropdown;
+    @FindBy(xpath = "//*[@id='fromAccountId']")
+    public WebElement accountBalanceDdown;
+    @FindBy(xpath = "(//div[@id='openAccountForm']//b)[2]")
+    public WebElement minimumBalance;
+    @FindBy(xpath = "//input[@value='Open New Account' and @class='button']")
+    public WebElement newAccountBtn;
+    @FindBy(xpath = "//div[@id='openAccountResult']//h1")
+    public WebElement successNewAccount;
+
+
+
+
 
 
 
@@ -218,7 +232,9 @@ public class DialogContent extends ParentPage {
             case "infoPhone": return this.infoPhone;
             case "updateProfileButton": return this.updateProfileButton;
             case "infoUpdateConfirm": return this.infoUpdateConfirm;
-
+            case "accountTypeDropdown": return this.accountTypeDropdown;
+            case "accountBalanceDdown": return this.accountBalanceDdown;
+            case "newAccountBtn": return this.newAccountBtn;
         }
         return null;
     }

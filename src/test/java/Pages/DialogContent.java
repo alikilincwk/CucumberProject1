@@ -158,6 +158,8 @@ public class DialogContent extends ParentPage {
 
 
 
+
+
     public void verifyMessageContainsText( String value) {
         wait.until(ExpectedConditions.visibilityOf(this.messageBoxDC));
         Assert.assertTrue(this.messageBoxDC.getText().toLowerCase().contains(value.toLowerCase()));

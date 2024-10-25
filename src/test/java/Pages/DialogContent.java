@@ -89,8 +89,12 @@ public class DialogContent extends ParentPage {
     public WebElement fromAccountId;
     @FindBy(xpath = "(//table[@id='transactionTable']//tr[last()])[2]")
     public WebElement lastFundsTransferReceived;
+    @FindBy(xpath = "(//td[@align='right'])[2]/following-sibling::td")
+    public WebElement dateControl;
     @FindBy(xpath = "(//td[@align='right'])[5]/following-sibling::td")
     public WebElement amountControl;
+    @FindBy(xpath = "(//td[@align='right'])[5]/following-sibling::td")
+    public WebElement amountControl2;
     @FindBy(css = "[id='accountId']")
     public WebElement selectAccountInFindTransaction;
     @FindBy(xpath = "//select[@id='accountId']/option[last()]")
@@ -99,8 +103,12 @@ public class DialogContent extends ParentPage {
     public WebElement transactionIdtext;
     @FindBy(css = "[id='transactionId']")
     public WebElement transactionIdinput;
+    @FindBy(css = "[id='transactionDate']")
+    public WebElement transactionDateinput;
     @FindBy(css = "[id='findById']")
     public WebElement findTransactionButton;
+    @FindBy(css = "[id='findByDate']")
+    public WebElement transactiDateButton;
     @FindBy(xpath = "//h1[@class='title']")
     public WebElement errorMessage;
     @FindBy(css = "[id='amount']")
@@ -207,10 +215,14 @@ public class DialogContent extends ParentPage {
             case "transferControlMessage": return this.transferControlMessage;
             case "fromAccountId": return this.fromAccountId;
             case "lastFundsTransferReceived": return this.lastFundsTransferReceived;
+            case "dateControl": return this.dateControl;
             case "amountControl": return this.amountControl;
+            case "amountControl2": return this.amountControl2;
             case "selectAccountInFindTransaction": return this.selectAccountInFindTransaction;
             case "selectLastNumber": return this.selectLastNumber;
             case "transactionIdinput": return this.transactionIdinput;
+            case "transactionDateinput": return this.transactionDateinput;
+            case "transactiDateButton": return this.transactiDateButton;
             case "findTransactionButton": return this.findTransactionButton;
             case "transactionIdtext": return this.transactionIdtext;
             case "errorMessage": return this.errorMessage;

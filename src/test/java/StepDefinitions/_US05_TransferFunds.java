@@ -4,6 +4,7 @@ import Pages.DialogContent;
 import Pages.LeftNav;
 import Utilities.GWD;
 import io.cucumber.datatable.DataTable;
+import io.cucumber.java.bs.A;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -66,7 +67,6 @@ public class _US05_TransferFunds {
     public void userSendKeysInDialogForFindTransaction() {
         dc.myClick(dc.fromAccountId);
         dc.myClick(dc.lastFundsTransferReceived);
-        System.out.println(dc.transactionIdtext.getText());
         String text=dc.transactionIdtext.getText();
         ln.myClick(ln.findTransactions);
         dc.myClick(dc.selectAccountInFindTransaction);
@@ -74,6 +74,7 @@ public class _US05_TransferFunds {
         dc.myClick(dc.selectLastNumber);
         dc.mySendKeys(dc.transactionIdinput, text);
         dc.myClick(dc.findTransactionButton);
+       // Assert.assertTrue(dc.amountControl.equals(dc.amountControl2));
 
 
     }

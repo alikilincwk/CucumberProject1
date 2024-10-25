@@ -2,17 +2,25 @@ Feature: TransferFunds Functionality
 
   Background:
     Given Navigate to ParaBank Website
+    And Click on the Element in LeftNav
+      | register |
+    And User send random keys in Dialog
+    And Click on the Element in Dialog
+      | registerButton2 |
+    Then Message Should be Displayed
+      | success |
 
   Scenario Outline: Create Transfer Funds
 
-    And User send keys in LeftNav
-      | username | ademir    |
-      | password | ademir123 |
-
     And Click on the Element in LeftNav
-      | loginButton |
-
-    Then Login Success Message Should be Displayed
+      | openNewAccount |
+    When User select the element from Dialog
+      | accountTypeDropdown | <accountType> |
+    Then Minimum Account Message Should be Displayed
+      | minimum |
+    When Click on the Element New Account
+    Then New Account Message Should be Displayed
+      | Opened |
 
     And Click on the Element in LeftNav
       | transferFunds |
@@ -45,20 +53,21 @@ Feature: TransferFunds Functionality
       | <amount1> |
 
     Examples:
-      | amount1 |
-      | 10      |
+      | amount1 | accountType |
+      | 10      | 1           |
 
 
   Scenario Outline: Create Transfer Funds and verify with Id
 
-    And User send keys in LeftNav
-      | username | hayat  |
-      | password | hayat1 |
-
     And Click on the Element in LeftNav
-      | loginButton |
-
-    Then Login Success Message Should be Displayed
+      | openNewAccount |
+    When User select the element from Dialog
+      | accountTypeDropdown | <accountType> |
+    Then Minimum Account Message Should be Displayed
+      | minimum |
+    When Click on the Element New Account
+    Then New Account Message Should be Displayed
+      | Opened |
 
     And Click on the Element in LeftNav
       | transferFunds |
@@ -83,6 +92,6 @@ Feature: TransferFunds Functionality
     And User send keys and click in Dialog for Find Transaction Id
 
     Examples:
-      | amount1 |
-      | 500     |
+      | amount1 | accountType |
+      | 500     | 1           |
 

@@ -52,14 +52,6 @@ public class _00_DataTable {
         }
     }
 
-    @And("User delete the element from Dialog")
-    public void userDeleteTheElementFromDialog(DataTable dtSilinecekler) {
-        List<String> listSilinecekler = dtSilinecekler.asList();
-        for (int i = 0; i < listSilinecekler.size(); i++) {
-            dc.deleteItem(listSilinecekler.get(i));
-        }
-    }
-
     @And("User select the element from Dialog")
     public void userSelectTheElementFromDialog(DataTable dtSelections) {
         List<List<String>> listSelections = dtSelections.asLists(String.class);

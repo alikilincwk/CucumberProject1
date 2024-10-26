@@ -173,11 +173,6 @@ public class DialogContent extends ParentPage {
         Assert.assertTrue(this.messageBoxDC.getText().toLowerCase().contains(value.toLowerCase()));
     }
 
-
-    public void deleteItem (String deleteName){
-
-    }
-
     public WebElement getWebElement(String strElementName) {
         switch (strElementName.trim()) {
             case "firstName": return this.firstName;

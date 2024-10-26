@@ -40,12 +40,5 @@ public class ParentPage {
         select.selectByIndex(index);
     }
 
-    public void LoginContainsText(WebElement element, String value) {
-        wait.until(ExpectedConditions.textToBePresentInElement(element, value));
-        Assert.assertTrue(element.getText().toLowerCase().contains(value.toLowerCase()));
-    }
-
-
-
     }
 
